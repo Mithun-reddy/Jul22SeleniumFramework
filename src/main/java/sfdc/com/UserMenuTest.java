@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -44,18 +45,14 @@ public class UserMenuTest {
 	
 	
 	public void TC06() {
-		String[] expectedUserMenuValues = { "My Profile", "My Settings", "Developer Console",
-				"Switch to Lightning Experience", "Logout" };
 //		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.findElement(By.cssSelector(".menuButtonButton #userNavLabel")).click();
 
-		for (int i = 0; i < expectedUserMenuValues.length; i++) {
-			String actualValue = driver.findElement(By.xpath("//div[@id='userNav-menuItems']/a" + "[" + (i + 1) + "]"))
-					.getText();
-			if (actualValue.equals(expectedUserMenuValues[i])) {
-				System.out.println(expectedUserMenuValues[i] + " is verified successfully");
-			}
-		}
+		Assert.assertTrue(Utilities.verifyUserMenuItems(), "User menu items should be as expected");
+		Assert.assertTrue(Utilities.selectOptionInUserMenuDropDown("My Profile"), "Option shouls e selected");
+//		Assert.assertEquals(Utilities.updateContactInfo(), "");
+		
+		
 		// clicks on my profile
 		driver.findElement(By.xpath("//div[@id='userNav-menuItems']/a[1]")).click();
 
