@@ -50,8 +50,9 @@ public class UserMenuTest {
 
 		Assert.assertTrue(Utilities.verifyUserMenuItems(), "User menu items should be as expected");
 		Assert.assertTrue(Utilities.selectOptionInUserMenuDropDown("My Profile"), "Option shouls e selected");
+		Assert.assertTrue(Utilities.createAPost(null, null, null));
+//		Assert.assertTrue(Utilities.isDispalyed(), "Accounts hsuls");
 //		Assert.assertEquals(Utilities.updateContactInfo(), "");
-		
 		
 		// clicks on my profile
 		driver.findElement(By.xpath("//div[@id='userNav-menuItems']/a[1]")).click();

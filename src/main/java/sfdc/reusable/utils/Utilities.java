@@ -1,15 +1,27 @@
 package sfdc.reusable.utils;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+/**
+ * This class has the reusable functions
+ * @author Mithun
+ * @author Pooja
+ */
 public class Utilities {
 
 	static WebDriver driver;
@@ -91,6 +103,12 @@ public class Utilities {
 		return isOptionVerified;
 	}
 
+	
+	/**
+	 * This function is responsible to select user menu item in user menu drop down by passing an option name
+	 * @param optionName example: {"My profile", "Settings"}
+	 * @return true if option is selected else false
+	 */
 	public static boolean selectOptionInUserMenuDropDown(String optionName) {
 		boolean isOptionSelected = false;
 		WebElement userMenuOption = driver.findElement(By.xpath("//[text()=" + optionName + "]"));
@@ -103,6 +121,13 @@ public class Utilities {
 		return isOptionSelected;
 	}
 	
+	/**
+	 * This function will create a post, Should be called in my profile page
+	 * @param textBox WebElement
+	 * @param message to be posted in text box
+	 * @param button
+	 * @return true if post is created else false
+	 */
 	public static boolean createAPost(WebElement textBox, String message, WebElement button) {
 		boolean isPostCreated = false;
 		if(textBox.isDisplayed()) {
@@ -117,5 +142,17 @@ public class Utilities {
 			}
 		}
 		return isPostCreated;
+	}
+	
+	
+	public static String captureScreenshot(WebDriver driver) throws IOException {
+		String dateFormat = new SimpleDateFormat("yyyy_MM_dd_HHmmss").format(new Date());
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		String destinationpath = System.getProperty("user.dir")+"//src//main//resources//screenshots//"+dateFormat+"_sfdc.PNG";
+		File sourceFile = screenshot.getScreenshotAs(OutputType.FILE);
+		File destFile = new File(destinationpath);
+		FileUtils.copyFile(sourceFile, destFile);
+		System.out.println("Screenshot captured");
+		return destinationpath;
 	}
 }
