@@ -1,0 +1,339 @@
+Start date: 11th July 2022
+End date: 11th Sept 2022 (tentative)
+
+Course content:
+1. Advance java 8 days
+2. Selenium framework 15 days (live project: salesforce)
+3. rest Api (POSTMAN + REST Assured) 4/5 days
+4. Cucumber (BDD framework)
+5. Mobile testing (Appium + Android app) --> 4/5 days
+6. Unix 1 day
+7. SQL db 1 day
+8. Java script 2 days
+9. Jenkins (1 day)
+10. Git (2 days)
+11. Manual testing + Agile (4 days)
+12. Jira (1 day)
+13. Cypress automation fw JS (3 days)
+14. POC 
+
+Mock interviews: 
+
+Instructor: Mithun
+Phone: +1 408-216-7828
+Email: mithun.r@tekarch.com
+
+Timings: 9 AM to 11:30 AM PST
+Session 2 - 2.5 hrs
+
+Assistant Instructor: Lakshmi Prasad
+Phone: +91 8277286167
+Email: l.prasad@tekarch.com
+
+Workshop Session - 1 hr
+Starts: Wednesday 13 July 2022 
+Timings: 7:30 AM to 8:30 AM PST
+
+Portal, Access, Class links
+
+Class materials:
+Google drive: 
+
+13-Jul:
+Exceptions:
+Super keyword:
+
+14-July:
+
+Object
+Class
+Inheritance --> Parent - Child relationship 
+Polymorphism
+Abstraction
+Encapsulation
+
+
+15-Jul
+Final
+	--> Create a constants (Stop value change)
+	--> Stop method overriding
+	--> Stop inheritance 
+Super
+
+
+Comparable:
+	Sort objects
+	Diff between array / array list.. Hetrogenous/Homogenous
+
+
+GIT --> Version control tool-(VCS)
+
+GIT is also called as distributed version control system (DVCS)
+
+SVN --> 
+
+SSH Key --> Interact b/n your local system to git/github
+
+Private - Public  key pair
+
+ssh-keygen -t ed25519 -C "mithun.r@tekarch.com"
+
+WD  --> Changes not tracked by git yet
+Staging area --> Git starts tracking the file
+Commit
+
+
+Hello World
+Second line
+
+branching strategy:
+	
+	
+Checkout: When you want to move from one branch to another branch
+		  When you want to move from one commit to another commit
+	
+
+Squash:
+	git rebase -i HEAD~2
+	vim editor
+	Insert mode --> I
+	pick --> squash
+	Esc --> exit from Insert
+	:wq! --> Save
+	Commit messages in vim editor
+	Insert mode --> I
+	pick --> squash
+	Esc --> exit from Insert
+	:wq! --> Save
+	git push -f
+	
+
+Conflicts -->
+
+Unix: 
+
+	Shell types:
+		1. Bourne shell --> $ (sh, ksh, bash ..)
+		2. C shell --> % zsh 
+
+	--> List of commands gets executed sequentially
+	--> # (To add comment)
+	--> Interpreted (These are not compiled)
+
+
+Creating file:
+	1. vi --> Open the file
+	2. touch --> create the file
+
+
+Permission: (Octal)
+0 No permission  ---
+1 Execute permission --x
+2 Write permission -w-
+3 Exec + Write     -wx
+4 Read permission  r--
+5 Read + exec      r-x
+6 Read + write     rw-
+7 Read+ write+exec  rwx
+
+
+d
+rwx -->Owner
+r-x -->Group
+r-x --> All user
+
+chmod 777 filename
+
+
+selenium session 1
+
+1. White box --> Testing code
+2. Black box  -->
+
+
+SRS (Business BA)
+UI-UX --> Design
+Developmet --> 
+Testing -->
+UAT -->
+Operations ops -->
+
+Manual  --> 
+Automation --> 
+
+Write Testcases
+1. 
+
+Java alone cannot help you to automate application
+Selenium --> Java language
+It is an open source tool --> Free to use
+
+
+Locators:
+	Dev tools > Elements > Inspect web elements
+	html -> web design language
+	8 types of locators in Selenium
+		Direct locators
+			1. name
+			2. ID
+			3. classname
+			4. tag name
+			
+		Indirect locators
+			5. link text 
+			6. partial linktext
+			7. xpath
+			8. CSS
+			
+			Xpaths:
+				1. Absolute xpath: Root of the element
+					faster
+				/html/body/div[1]/div[1]/div/div/div[2]/div[3]/form/div[1]/div/input[1]
+				2. Relative xpath: Starts from the node
+					Slower
+				Syntax: //tagname[@attribute="value"]
+						//input[@name="username"]
+						//*[@id="username"]
+						
+				Methods: 
+					Contains --> //input[contains(@name,"login")]
+					starts-with --> //input[starts-with(@name,"login")]
+					ends-with --> //input[ends-with(@name,"login")]
+					Or --> //*[@name="pw" or @id="username"]
+					And --> //*[@name="pw" and @id="username"]
+					text --> //a[text()="Use Custom Domain"]
+				
+				Axes methods:
+					Following: //ul[@id="tabBar"]//child::li[@id="home_Tab"]
+					Ancestor
+					Child
+					Preceding
+					Following-sibling
+					Parent
+					Descendant
+					Self
+				
+				Path expressions:
+				//
+				/
+				last() -->  //ul[@id="tabBar"]//child::li[last()-2]
+				position() --> //ul[@id="tabBar"]//child::li[position() mod 2 = 1]
+				(//ul[@id="tabBar"]/child::li)[3]
+				
+		CSS: Cascading style sheets
+			1. id  --> #home_Tab
+			2. classname  --> .zen-inlineList
+			3. attribute --> li[id="Chatter_Tab"]
+			4. multiple attribute --> li[id="Chatter_Tab"] [name="xyz"]
+			5. contains --> li[id*="Chatter"]
+			6. starts-with -->  li[id^="Tab"]
+			7. ends-with --> li[id$="Tab"]
+			8. Match all --> li[id~="home_Tab"]
+			
+		Differences:	
+			Xpath: Xpath can traverse forward backward
+			CSS: Traverse in forward direction
+		
+3 TC
+
+TC-06, TC-012, TC-13
+
+
+	3-Aug
+		Dynamic waits: 
+		Waits in selenium:
+			1. Implicit --> Is a condition which will wait till all the webelemets load
+				It wont work in the case of ajax or async elements
+				Implicit wait can be applied only once(At the beginning)
+			2. Explicit --> This can be used when we want to wait for a specific condition
+			3. FLuent wait --> Polling period, This can ignore other exceptions while it is polling (ajax elements)
+
+
+	// Fluent wait
+		Wait<WebDriver> wait1 = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(30))  
+				.pollingEvery(Duration.ofSeconds(3))
+				.ignoring(NoSuchElementException.class);
+		WebElement pass = wait.until(new Function<WebDriver, WebElement>() {
+			public WebElement apply(WebDriver driver) {
+				return driver.findElement(By.id("password"));
+			}
+		});
+		
+	
+	Boolean methods
+		isDisplayed, isEnabled, isSelected
+	
+Java Script executor:
+	It is an interface that helps to execute JS through selenium webdriver
+	Why?
+		In case the operations on webelement are not working we can use js executor 
+		to perform operation on a web element
+		
+	// sending keys
+	// clicking on button
+	// generating alerts
+	
+	
+	TestNG --> Test next generation
+		TestNG annotations execution order
+		@BeforeSuite
+		@BeforeTest
+		@BeforeGroups
+		@BeforeClass
+		@BeforeMethod
+		@Test
+		@AfterMethod
+		@AfterClass
+		@AfterGroups
+		@AfterTest
+		@AfterSuite
+		
+		
+	Prioritize
+	Assertoins
+	Groups
+	Dataprovider
+	Listerners
+	Parallel, Cross browser
+	
+	
+	TestNg - default priorities
+	A-Z a-z 0-9s
+	when no priority is assigned 0 will be the default priority
+	-ve to higest number
+	
+	Assertions:
+		Soft: 
+		Hard:
+		
+	5- AUg
+		Dataprovider: 
+		
+	6-Aug
+	
+	Extent reports
+	Listeners: ItestNGLIstener, Ireporter
+	TestNg listens to some events: PASS, FAILED, SKIPPED, START, END,
+		
+
+.xls (<2003)
+.xlsx (>2007)
+
+	Interfaces:
+		Workbook
+		Sheet
+		Row
+		Cell
+		
+	Class: (xls)
+		HSSFworkbook: implements workbook
+		HSSFsheet: implements Sheet interface
+		HSSFrow: 
+		HSSFcell:
+		
+		:xlsx
+		XSSFWorkbook: implements workbook
+		XSSFsheet: 
+		Xssfrow:
+		xssfcell:
