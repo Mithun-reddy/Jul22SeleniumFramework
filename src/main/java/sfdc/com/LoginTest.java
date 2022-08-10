@@ -1,9 +1,11 @@
 package sfdc.com;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.jsoup.helper.DataUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,16 +28,18 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import sfdc.reusable.utils.DataUtils;
 import sfdc.reusable.utils.Utilities;
 
 @Listeners(ListenersDemo.class)
 public class LoginTest {
-	public WebDriver driver = new ChromeDriver();
+	public static WebDriver driver;
 	public ExtentReports extent;
-	public ExtentTest test;
+	public static ExtentTest test;
 	
 	@BeforeSuite
 	public void initializations() {
+		WebDriverManager.chromedriver().setup();
 		
 	}
 	
@@ -63,11 +67,12 @@ public class LoginTest {
 	}
 	
 	@BeforeMethod
-	public void launchApp() {
+	public void launchApp() throws IOException {
 //		ChromeOptions co = new ChromeOptions();
 //		co.addArguments("--headless","--disable-gpu", "--window-size=1080,720", "--ignore-cerficate-errors");
 //		driver = new ChromeDriver();
-		driver.get("https://login.salesforce.com");
+		driver=new ChromeDriver();
+		driver.get(DataUtils.readPropertiesFile("logintestdata", "prod.salesforce"));
 		
 	}
 	
@@ -76,23 +81,25 @@ public class LoginTest {
 		driver.quit();
 	}
 	
-	@Test(dataProvider = "UserNames", dataProviderClass = LoginTest.class, groups = "Login")
-	public void loginErrorMessage01(String username, String password) throws IOException {
+	@Test(dataProviderClass = LoginTest.class, groups = "Login")
+	public void loginErrorMessage01(Method name) throws IOException {
 //		SoftAssert sa = new SoftAssert();
-		test = extent.createTest("TC01");
+		test = extent.createTest(name.getName());
+		String username = DataUtils.readPropertiesFile("logintestdata", "prod.valid.username");
 		String expectedTitle = "Login | Salesforce";
 		String actualTitle = driver.getTitle();
 //		String username = "jul22.mithun@ta.com";
 		Assert.assertEquals(actualTitle, expectedTitle, "Login page should be visible");
 		test.log(Status.INFO, "Title of the page is verified");
-		String expectedError = "Please enter your password";
+		String expectedError = "Please enter your password.";
 		WebElement usernameElement = driver.findElement(By.name("username"));
 		usernameElement.sendKeys(username);
 		test.log(Status.INFO, "Username is entered");
 		String actualUsername = usernameElement.getAttribute("value");
 		Assert.assertEquals(actualUsername, username, "username displayed should be equal");
-		driver.findElement(By.name("pw")).clear();
+		WebElement pass = driver.findElement(By.name("pw"));
 		test.log(Status.INFO, "password id cleared");
+		pass.sendKeys(DataUtils.readExcel("POIDEMO", 1, 1));
 		String actualPw = driver.findElement(By.name("pw")).getText();
 		Assert.assertEquals(actualPw, "", "password should be null");
 		driver.findElement(By.id("Login")).click();
@@ -100,7 +107,7 @@ public class LoginTest {
 		String actualError = driver.findElement(By.id("error")).getText();
 		//hard assert
 		Assert.assertEquals(actualError, expectedError, "Error message should be equal");
-		test.log(Status.PASS, "TC01 passed");
+		
 		
 		// soft assert (verify)
 //		sa.assertEquals(actualError, expectedError);
