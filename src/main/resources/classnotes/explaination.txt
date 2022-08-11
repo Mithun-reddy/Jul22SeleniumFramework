@@ -337,3 +337,16 @@ Java Script executor:
 		XSSFsheet: 
 		Xssfrow:
 		xssfcell:
+
+11-Aug
+	Framework:
+		POI, Extent, TestNg,  Log4j
+		
+	Designs:
+		Data driven --> excel, prop, json, data provider
+		Modular driven --> individual modules can be combined to automate a larger test case.
+		keyword driven --> 
+		pom design --> page object model, Selenium library, Object repository(webelemnets, reusbale functions) for each pages 
+		hybrid --> combining above is called as hybrid
+		
+		

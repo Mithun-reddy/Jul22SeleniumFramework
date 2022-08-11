@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jsoup.helper.DataUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -36,6 +38,7 @@ public class LoginTest {
 	public static WebDriver driver;
 	public ExtentReports extent;
 	public static ExtentTest test;
+
 	
 	@BeforeSuite
 	public void initializations() {
@@ -85,6 +88,7 @@ public class LoginTest {
 	public void loginErrorMessage01(Method name) throws IOException {
 //		SoftAssert sa = new SoftAssert();
 		test = extent.createTest(name.getName());
+		
 		String username = DataUtils.readPropertiesFile("logintestdata", "prod.valid.username");
 		String expectedTitle = "Login | Salesforce";
 		String actualTitle = driver.getTitle();
