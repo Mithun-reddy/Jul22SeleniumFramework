@@ -9,11 +9,17 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.collections4.map.HashedMap;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import sfdc.com.ExtentReportDemo;
+
 public class DataUtils {
+	
+	private static Logger logger = LogManager.getLogger(DataUtils.class);
 
 	public static String readPropertiesFile(String filename, String key) throws IOException {
 

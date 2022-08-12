@@ -3,11 +3,15 @@ package sfdc.com;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class ExtentReportDemo {
+	private static Logger logger = LogManager.getLogger(ExtentReportDemo.class);
 	
 	public static void main(String[] args) {
 		
