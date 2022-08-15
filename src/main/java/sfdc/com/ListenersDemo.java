@@ -10,7 +10,7 @@ import com.aventstack.extentreports.Status;
 
 import sfdc.reusable.utils.Utilities;
 
-public class ListenersDemo extends LoginTest implements ITestListener  {
+public class ListenersDemo implements ITestListener  {
 
 	@Override
 	public void onTestStart(ITestResult result) {
@@ -23,21 +23,21 @@ public class ListenersDemo extends LoginTest implements ITestListener  {
 	public void onTestSuccess(ITestResult result) {
 		
 		System.out.println("Test passed");
-		LoginTest.test.log(Status.PASS, result.getName()+" Passed");
+//		LoginTest.test.log(Status.PASS, result.getName()+" Passed");
 		
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
 //		LoginTest login = new LoginTest();
-		try {
-			LoginTest.test.addScreenCaptureFromPath(Utilities.captureScreenshot(LoginTest.driver));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			LoginTest.test.addScreenCaptureFromPath(Utilities.captureScreenshot(LoginTest.driver));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
-		LoginTest.test.log(Status.FAIL, result.getName()+" Failed");
+//		LoginTest.test.log(Status.FAIL, result.getName()+" Failed");
 		
 	}
 
