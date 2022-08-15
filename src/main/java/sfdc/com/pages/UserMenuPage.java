@@ -12,13 +12,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
+import sfdc.reusable.utils.Utilities;
+
 public class UserMenuPage extends BasePage {
 
 	public UserMenuPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(id = "menuButtonButton")
+	@FindBy(id = "userNavLabel")
 	public WebElement userMenu;
 	
 	@FindBy(xpath = "//div[@id='userNav-menuItems']/a")
@@ -52,18 +54,18 @@ public class UserMenuPage extends BasePage {
 	@FindBy(xpath = "//input[@id='lastName']")
 	public WebElement Abouttablastname;
 
-	@FindBy(xpath = "//*[@id=\"TabPanel\"]/div/div[2]/form/div/input[1]")
-	public WebElement saveall;
+	@FindBy(xpath = "//*[@value='Save All']")
+	public WebElement saveAllButton;
 
 	@FindBy(xpath = "//*[@id=\"tailBreadcrumbNode\"]")
 	public WebElement Userprofilepagenamedisplay;
 
 	// Postlink
 	@FindBy(css = "#publishereditablearea")
-	public WebElement postlink;
+	public WebElement postLink;
 
 	@FindBy(xpath = "/html/body")
-	public WebElement postcontent;
+	public WebElement postTextArea;
 
 	@FindBy(xpath = "//input[@id='publishersharebutton']")
 	public WebElement shareButton;
@@ -198,9 +200,9 @@ public class UserMenuPage extends BasePage {
 	 * @param optionName example: {"My profile", "Settings"}
 	 * @return true if option is selected else false
 	 */
-	public boolean selectOptionInUserMenuDropDown(String optionName) {
+	public boolean selectOptionInUserMenuDropDown(WebDriver driver,String optionName) {
 		boolean isOptionSelected = false;
-		WebElement userMenuOption = driver.findElement(By.xpath("//[text()=" + optionName + "]"));
+		WebElement userMenuOption = driver.findElement(By.xpath("//*[text()='" + optionName + "']"));
 		if (userMenuOption.isDisplayed()) {
 			userMenuOption.click();
 			isOptionSelected = true;
@@ -217,12 +219,14 @@ public class UserMenuPage extends BasePage {
 	 * @param button
 	 * @return true if post is created else false
 	 */
-	public boolean createAPost(String message) {
+	public boolean createAPost(WebDriver driver, String message) {
 		boolean isPostCreated = false;
-		if (postlink.isDisplayed()) {
-			postlink.click();
+		if (postLink.isDisplayed()) {
+			postLink.click();
 			System.out.println("Clicked on the text box");
-			postlink.sendKeys(message);
+			driver.switchTo().frame(0);
+			postTextArea.sendKeys(message);
+			driver.switchTo().defaultContent();
 			System.out.println("Entered the text in text box");
 			if (shareButton.isDisplayed()) {
 				shareButton.click();
@@ -232,5 +236,45 @@ public class UserMenuPage extends BasePage {
 		}
 		return isPostCreated;
 	}
+	
+	public boolean isUserMenuSeen() {
+		if(userMenu.isDisplayed()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void clickOnUserMenu() {
+		if(userMenu.isDisplayed()) {
+			userMenu.click();
+		}
+	}
 
+	public boolean openEditProfileModal() {
+		boolean isEditProfileWindowSeen = false;
+		if(editprofilebutton.isDisplayed()) {
+			editprofilebutton.click();
+			if(EditProfilePopupwindow.isDisplayed()) {
+				isEditProfileWindowSeen = true;
+			}
+		}
+		return isEditProfileWindowSeen;
+	}
+	
+	public boolean changeLastNameInAboutTab(WebDriver driver, String lastName) {
+		driver.switchTo().frame("contactInfoContentId");
+		boolean isLastNameChanged = false;
+		if(Abouttab.isDisplayed()) {
+			Abouttab.click();
+			if (Abouttablastname.isDisplayed()) {
+				Abouttablastname.clear();
+				Abouttablastname.sendKeys(lastName);
+				saveAllButton.click();
+				isLastNameChanged = true;
+			}
+		} 
+		driver.switchTo().defaultContent();
+		return isLastNameChanged;
+	}
 }

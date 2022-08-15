@@ -372,3 +372,20 @@ Configuration:
 	2. .xml, .json, .yml
 
 Place your configuration in your project: src/main/resources/log4j2.xml
+
+15-Aug:
+	
+	How to create testng.xml files
+		Programatical way (Dynamic)
+		Static way
+	
+	Cross-browser testing:
+	
+	Parallel-Testing: 
+		By using testng xml (You have to use threadlocal bcz selenium doesn't guarentee )
+		BY using selenium grid (hub -node)
+		
+	Executing through pom.xml file:
+		
+		
+		

@@ -22,7 +22,6 @@ public class ExtentReportDemo {
 		
 		String reportPath = System.getProperty("user.dir")+"\\src\\main\\resources\\reports\\"+dateFormat+"_sfdc.html";
 		
-		
 		ExtentReports extent = new ExtentReports();
 		ExtentHtmlReporter htmlReport = new ExtentHtmlReporter(reportPath);
 		extent.attachReporter(htmlReport);
@@ -35,7 +34,6 @@ public class ExtentReportDemo {
 		test1.info("password enetered");
 		test1.info("Login button clicked");
 		test1.pass("TC01 PASSED");
-		
 		
 		ExtentTest test2 = extent.createTest("TC02");
 		test2.info("App launched");

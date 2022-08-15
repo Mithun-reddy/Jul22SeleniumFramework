@@ -1,5 +1,5 @@
 package sfdc.com.pages;
 
-public class LeadsPage {
+public class LeadsPage extends BasePage {
 
 }
