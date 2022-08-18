@@ -387,5 +387,160 @@ Place your configuration in your project: src/main/resources/log4j2.xml
 		
 	Executing through pom.xml file:
 		
+16_Aug: MAVEN
+
+	Build and dependency management tool
+	
+	Build: Generation (.jar, .war, .ear)
+		
+		Developer: Writing code, compile the code, Unit testing, packaging the code,  deploy, 
+		
+		version 0.0.1 (major.minor.patch) 0.0.2		0.1.2   1.1.0
+		
+	Keywords:
+	Artifactory: 1.0.1.jar
+	Build artifacts: build, logs, reports
+	XML: extensive markup language
+	Central repo:  
+	Local repo: .m2 folder
+	
+	What will happen when you add a dependency in your pom.xml?
+		
+	In organizations where tight security controls: Settings.xml file will come handy, So that instead of contacting maven central repo it can contact internal repo
+	
+	
+	Built-in build lifecycle:
+		Default: Project build and deploymnet
+		Clean: Project cleaning (Artifacts,reports, Cleaned)
+		Site (Documentation, project site)
+		
+	Build lifecycle will have phases, Phases are acheived by using a respective plugin
+		Validate: Validating all the poj information
+		Compile: Compile the source 
+		test: Unit test
+		package: take compiled code and package it. (jar war )
+		Integration-test
+		Verify: run checks on the package
+		Install: install the package
+		Deploy:Copies the final package to the remote repo)
+		
+	Each phase has a goal 
+		Process-resources : resources: resources
+		compile: compiler:compile
+		test-compile: compiler:testcompile
+		test: surefire:test
+		install: install:install
+		deploy : deploy:deploy
+		
+			
+		
+API TESTING:
+	
+	1. REST representational state transfer, JSON
+	{key: value, key2: value2}
+	2. SOAP Simple object access protocol, XML
+	
+	When API are used over the web are called as web services
+		Web API --> Takes the request from the client to a webserver and sends back
+			the response from a web server to a client is called as WEB API
+		web services --> 3 4 api same network (cluster)
+	
+65.12.5.6 --> login 
+65.12.5.7 --> home
+65.12.5.8 --> accounts
+
+
+73.15.7.0  --> Payments
+
+Functional UI testing --> 
+
+API testing:
+	Functional API testing: 
+	Load / performance testing: 
+	Security testing: 
+
+
+API --> DB 
+	
+	CRUD operations:
+	Create, read, update, delete  --> 
+	POST, GET, PUT/UPDATE, DELETE
+
+		
+https://www.google.com/complete/search/?q&cp=0&client=gws-wiz&xssi=t&
+hl=en-IN&authuser=0&pq=selenium&psi=WCv9YvS0KJCC3LUP4s-giAI.1660758883274&dpr=1.2000000476837158
+
+URI: Uniform resource identifier
+path / endpoint 
+Query params: ? 
+
+URL = URI + path + endpoint + version + query param
+
+
+Sample swagger documnet:
+https://api.sling.is/#/daily_report/post_organisations_dailyreport_send
+https://dev.weebly.com/pf_api_coupons.html#getretrieve-details-for-a-coupon
+
+Api testing website: 
+https://qa01-tekarch-accmanager.web.app/
+
+ https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net/login
+ 
+ POST
+ 
+ content-type: application/json
+ 
+{username: "mithun@ta.com", password: "mithun"}
+
+201
+[{"token":"B4f71Nh6K4Rc9WiUfwZOEE45ALg1QNZqiC3DTgslwbkJWmhB62jnji8UXNZLiypKpsRadm35lbfCnUvMTlwB4Q43ReKMIqrVTKXr","userid":"taGX4XQQfXD3Z76sI1Xn"}]
+
+	
+alina.feb22@ta.com	alina@tekarch123
+annaporni.feb22@ta.com	annaporni@tekarch123
+bijaylakshmi.feb22@ta.com	bijaylakshmi@tekarch123
+deepika.feb22@ta.com	deepika@tekarch123
+devi.feb22@ta.com	devi@tekarch123
+dipti.feb22@ta.com	dipti@tekarch123
+divya.feb22@ta.com	divya@tekarch123
+geeta.feb22@ta.com	geeta@tekarch123
+humaira.feb22@ta.com	humaira@tekarch123
+jaswinder.feb22@ta.com	jaswinder@tekarch123
+jyothi.feb22@ta.com	jyothi@tekarch123
+karunya.feb22@ta.com	karunya@tekarch123
+meenatchi.feb22@ta.com	meenatchi@tekarch123
+prajakta.feb22@ta.com	prajakta@tekarch123
+rajeshwari.feb22@ta.com	rajeshwari@tekarch123
+ramanjeet.feb22@ta.com	ramanjeet@tekarch123
+rojalina.feb22@ta.com	rojalina@tekarch123
+sree.feb22@ta.com	sree@tekarch123
+surekha.feb22@ta.com	surekha@tekarch123
+ushasree.feb22@ta.com	ushasree@tekarch123
+aditi.feb22@ta.com	aditi@tekarch123
+akila.feb22@ta.com	akila@tekarch123
+anitha.feb22@ta.com	anitha@tekarch123
+anupama.feb22@ta.com	anupama@tekarch123
+bijayalaxmi.feb22@ta.com	bijayalaxmi@tekarch123
+haripriya.feb22@ta.com	haripriya@tekarch123
+hina.feb22@ta.com	hina@tekarch123
+kushwah.feb22@ta.com	kushwah@tekarch123
+latha.feb22@ta.com	latha@tekarch123
+pushpalatha.feb22@ta.com	pushpalatha@tekarch123
+raghajyothi.feb22@ta.com	raghajyothi@tekarch123
+rajeshwari.feb22@ta.com	rajeshwari@tekarch123
+rini.feb22@ta.com	rini@tekarch123
+ruchi.feb22@ta.com	ruchi@tekarch123
+ruckumani.feb22@ta.com	ruckumani@tekarch123
+shwetha.feb22@ta.com	shwetha@tekarch123
+soniya.feb22@ta.com	soniya@tekarch123
+suchismita.feb22@ta.com	suchismita@tekarch123
+swati.feb22@ta.com	swati@tekarch123
+syed.feb22@ta.com	syed@tekarch123
+tsering.feb22@ta.com	tsering@tekarch123
+venkatrao.feb22@ta.com	venkatrao@tekarch123
+varsha.feb22@ta.com	varsha@tekarch123
+bijaylakshmi01.feb22@ta.com	bijaylakshmi01@tekarch123
+
+	
 		
 		
