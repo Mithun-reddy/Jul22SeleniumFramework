@@ -484,7 +484,8 @@ https://dev.weebly.com/pf_api_coupons.html#getretrieve-details-for-a-coupon
 Api testing website: 
 https://qa01-tekarch-accmanager.web.app/
 
- https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net/login
+API:
+https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net/login
  
  POST
  
@@ -540,6 +541,53 @@ tsering.feb22@ta.com	tsering@tekarch123
 venkatrao.feb22@ta.com	venkatrao@tekarch123
 varsha.feb22@ta.com	varsha@tekarch123
 bijaylakshmi01.feb22@ta.com	bijaylakshmi01@tekarch123
+
+
+Login:
+	
+	Authentication: 
+
+	Authorization: 
+
+		Oauth 1.0, 2.0 --> client id, client secret, Auth URL
+		Basic --> HTTP username, password
+		Bearer
+
+Rest API automation:
+	
+	Java, Rest assured, Testng, Hamcrest matchers,Json jaway, Jackson databind
+
+Error codes:
+		1XX: Informational 
+		2XX: Success
+		3XX: Redirection
+		4XX: Client error
+		5XX: Server error
+		
+		https://restfulapi.net/http-status-codes/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 		
