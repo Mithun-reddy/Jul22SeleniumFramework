@@ -567,6 +567,35 @@ Error codes:
 		https://restfulapi.net/http-status-codes/
 
 
+Validations:
+	Status code 
+	Structural validation --> Schema validators 
+	Data validation --> 
+
+Object mapper:
+	Serializing, Deserializing
+	
+Application development backend architecture:
+
+	Single api add,put,delete,get --> Monolithic architecture
+
+	API --> https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net 
+
+	Micro service architecture --> multiple api's 
+	
+
+
+
+
+	
+	
+
+
+
+
+
+
+
 
 
 
